@@ -3,16 +3,18 @@ import TableHeader from "@/components/Table/TableHeader"
 import TableBody from "@/components/Table/TableBody"
 
 async function loadPatients() {
-  const data = await prisma.PatientInfo.findMany()
-  console.log(data)
+  return await prisma.PatientInfo.findMany()
 }
 
-export default function HomePage() {
-  loadPatients()
+export default async function HomePage({ searchParams }) {
+  const allPatients = await loadPatients()
   return (
     <section className="home__section">
       <TableHeader />
-      <TableBody />
+      <TableBody
+        allPatients={allPatients}
+        filterWord={searchParams.filterWord}
+      />
     </section>
   )
 }
