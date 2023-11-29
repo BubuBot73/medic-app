@@ -6,6 +6,8 @@ async function loadPatients() {
   return await prisma.PatientInfo.findMany()
 }
 
+export const dynamic = "force-dynamic"
+
 export default async function HomePage({ searchParams }) {
   const allPatients = await loadPatients()
   return (
