@@ -34,6 +34,13 @@ export default function TableHeader() {
         >
           Ver todos
         </button>
+        <button
+          type="button"
+          className="newPatient"
+          onClick={() => router.push("/new")}
+        >
+          Nuevo paciente
+        </button>
       </form>
     </div>
   )
