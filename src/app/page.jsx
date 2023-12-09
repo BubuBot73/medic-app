@@ -13,10 +13,12 @@ export default async function HomePage({ searchParams }) {
   return (
     <section className="home__section">
       <TableHeader />
-      <TableBody
-        allPatients={allPatients}
-        filterWord={searchParams.filterWord}
-      />
+      {allPatients.length !== 0 && (
+        <TableBody
+          allPatients={allPatients}
+          filterWord={searchParams.filterWord}
+        />
+      )}
     </section>
   )
 }
