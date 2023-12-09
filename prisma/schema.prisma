@@ -13,16 +13,23 @@ datasource db {
 
 model PatientInfo {
 	id Int @id @default(autoincrement())
-	dr_name String
-	name String
-	gender String
-	birth_date DateTime
-	address String
-	procedence String
-	emergency_contact_name String
-	emergency_contact_phone String
-	on_emergency_instructions String
-	blood_type String
-	first_visit DateTime
+	dr_name String?
+	name String?
+	gender String?
+	birth_date DateTime?
+	procedence String?
+	emergency_contact_name String?
+	emergency_contact_phone String?
+	on_emergency_instructions String?
+	blood_type String?
+	first_visit DateTime?
 	create_date DateTime @default(now())
+	consult_reason String?
+	record_pato String?
+	current_illness String?
+	physical_exam String?
+	posture_valoration String?
+	marcha String?
+	diagnostics String?
 }
+

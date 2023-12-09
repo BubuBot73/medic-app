@@ -25,11 +25,17 @@ export default function Forms({ writeMode, patientId }) {
       gender: e.target.gender.value,
       birth_date: e.target.birth_date.value + "T00:00:00.000Z",
       procedence: e.target.procedence.value,
-      address: e.target.address.value,
       blood_type: e.target.blood_type.value,
       emergency_contact_name: e.target.emergency_contact_name.value,
       emergency_contact_phone: e.target.emergency_contact_phone.value,
       on_emergency_instructions: e.target.on_emergency_instructions.value,
+      consult_reason: e.target.consult_reason.value,
+      record_pato: e.target.record_pato.value,
+      current_illness: e.target.current_illness.value,
+      physical_exam: e.target.physical_exam.value,
+      posture_valoration: e.target.posture_valoration.value,
+      marcha: e.target.marcha.value,
+      diagnostics: e.target.diagnostics.value,
       first_visit: "2023-11-20T00:00:00.000Z",
     }
 
@@ -56,7 +62,7 @@ export default function Forms({ writeMode, patientId }) {
   }
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="flex justify-center items-center m-16">
       <form
         onSubmit={onSubmit}
         className="flex flex-col border border-slate-50 rounded-md shadow-md p-8 bg-slate-900 relative"
@@ -218,27 +224,6 @@ export default function Forms({ writeMode, patientId }) {
 
           <div className="sm:col-span-2">
             <label
-              htmlFor="address"
-              className="block text-sm font-medium leading-6 text-white"
-            >
-              Dirección
-            </label>
-            <div className="mt-2">
-              <input
-                type="text"
-                name="address"
-                id="address"
-                className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                value={patient ? patient.address : null}
-                onChange={(e) =>
-                  setPatient({ ...patient, address: e.target.value })
-                }
-              />
-            </div>
-          </div>
-
-          <div className="sm:col-span-2">
-            <label
               htmlFor="blood_type"
               className="block text-sm font-medium leading-6 text-white"
             >
@@ -330,6 +315,172 @@ export default function Forms({ writeMode, patientId }) {
                   setPatient({
                     ...patient,
                     on_emergency_instructions: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
+          <div className="col-span-full">
+            <label
+              htmlFor="consult_reason"
+              className="block text-sm font-medium leading-6 text-white"
+            >
+              Motivo de la consulta
+            </label>
+            <div className="mt-2">
+              <textarea
+                type="text"
+                name="consult_reason"
+                id="consult_reason"
+                className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                value={patient ? patient.consult_reason : null}
+                onChange={(e) =>
+                  setPatient({
+                    ...patient,
+                    consult_reason: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
+        </div>
+
+        <hr className="my-10 w-full" />
+
+        <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="col-span-full">
+            <label
+              htmlFor="record_pato"
+              className="block text-sm font-medium leading-6 text-white"
+            >
+              Antecedentes patológicos
+            </label>
+            <div className="mt-2">
+              <textarea
+                type="text"
+                name="record_pato"
+                id="record_pato"
+                className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                value={patient ? patient.record_pato : null}
+                onChange={(e) =>
+                  setPatient({
+                    ...patient,
+                    record_pato: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
+          <div className="col-span-full">
+            <label
+              htmlFor="current_illness"
+              className="block text-sm font-medium leading-6 text-white"
+            >
+              Padecimiento actual
+            </label>
+            <div className="mt-2">
+              <textarea
+                type="text"
+                name="current_illness"
+                id="current_illness"
+                className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                value={patient ? patient.current_illness : null}
+                onChange={(e) =>
+                  setPatient({
+                    ...patient,
+                    current_illness: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
+          <div className="col-span-full">
+            <label
+              htmlFor="physical_exam"
+              className="block text-sm font-medium leading-6 text-white"
+            >
+              Exploración física
+            </label>
+            <div className="mt-2">
+              <textarea
+                type="text"
+                name="physical_exam"
+                id="physical_exam"
+                className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                value={patient ? patient.physical_exam : null}
+                onChange={(e) =>
+                  setPatient({
+                    ...patient,
+                    physical_exam: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
+          <div className="col-span-full">
+            <label
+              htmlFor="posture_valoration"
+              className="block text-sm font-medium leading-6 text-white"
+            >
+              Valoración postural
+            </label>
+            <div className="mt-2">
+              <textarea
+                type="text"
+                name="posture_valoration"
+                id="posture_valoration"
+                className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                value={patient ? patient.posture_valoration : null}
+                onChange={(e) =>
+                  setPatient({
+                    ...patient,
+                    posture_valoration: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
+          <div className="col-span-full">
+            <label
+              htmlFor="marcha"
+              className="block text-sm font-medium leading-6 text-white"
+            >
+              Marcha
+            </label>
+            <div className="mt-2">
+              <textarea
+                type="text"
+                name="marcha"
+                id="marcha"
+                className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                value={patient ? patient.marcha : null}
+                onChange={(e) =>
+                  setPatient({
+                    ...patient,
+                    marcha: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
+          <div className="col-span-full">
+            <label
+              htmlFor="diagnostics"
+              className="block text-sm font-medium leading-6 text-white"
+            >
+              Diagnóstico
+            </label>
+            <div className="mt-2">
+              <textarea
+                type="text"
+                name="diagnostics"
+                id="diagnostics"
+                className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                value={patient ? patient.diagnostics : null}
+                onChange={(e) =>
+                  setPatient({
+                    ...patient,
+                    diagnostics: e.target.value,
                   })
                 }
               />
